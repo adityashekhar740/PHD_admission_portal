@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function Navbar() {
   return (
     <div className='h-[59px] bg-[#fafbfc] px-4 flex justify-between shadow-lg ' >

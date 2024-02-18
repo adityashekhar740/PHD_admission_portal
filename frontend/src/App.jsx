@@ -5,6 +5,9 @@ import Dashboard from "./components/Dashboard";
 import Queries from "./components/Queries";
 import FAQs from "./components/FAQs";
 import Profile from "./components/Profile";
+import AIP from "./components/AIP";
+import QR from "./components/QR";
+import AC from "./components/AC";
 
 function App  () {
 
@@ -14,7 +17,12 @@ function App  () {
     <BrowserRouter>
     <Routes>
     <Route path='/' element={<Home />}>
-      <Route path="/dashboard" element={<Dashboard/>} />
+      <Route index  element={<Dashboard/>} />
+      <Route path="/dashboard"  element={<Dashboard/>} >
+        <Route path="Applications-in-progress" element={<AIP />} />
+        <Route path="Application-completed" element={<AC />} />
+        <Route path="Queries-raised" element={<QR />} />
+      </Route>
       <Route path="/queries" element={<Queries/>} />
       <Route path="/FAQs" element={<FAQs/>} />
       <Route path="/profile" element={<Profile/>} />
