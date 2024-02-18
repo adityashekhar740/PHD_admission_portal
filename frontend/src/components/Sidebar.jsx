@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { CiUser } from "react-icons/ci";
+import { IoIosChatboxes } from "react-icons/io";
+import { SlQuestion } from "react-icons/sl";
+import { RiLogoutBoxLine } from "react-icons/ri";
+
 
 function Sidebar() {
   const  [active, setactive] = useState('Dashboard');
@@ -12,19 +17,23 @@ function Sidebar() {
         
 
 
-        <NavLink onClick={()=>{setactive('Profile')}} className={` h-[47px] p-2  border-t-[0.2px]  ${active==='Profile'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/profile'} >
+        <NavLink onClick={()=>{setactive('Profile')}} className={` flex gap-1 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='Profile'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/profile'} >
+            <CiUser />
             Profile
         </NavLink>
-        <NavLink onClick={()=>{setactive('My Queries')}} className={` h-[47px]  border-t-[0.2px]  p-2 ${active==='My Queries'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/queries'} >
+        <NavLink onClick={()=>{setactive('My Queries')}} className={` flex gap-1 items-center h-[47px]  border-t-[0.2px]  p-2 ${active==='My Queries'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/queries'} >
+            <IoIosChatboxes />
             My Queries
         </NavLink>
-        <NavLink onClick={()=>{setactive('FAQs')}} className={` h-[47px] p-2  border-t-[0.2px]  ${active==='FAQs'?'bg-[#e45c37]':'bg-[#656565]'}  `}to={'/FAQs'} >
+        <NavLink onClick={()=>{setactive('FAQs')}} className={` flex gap-2 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='FAQs'?'bg-[#e45c37]':'bg-[#656565]'}  `}to={'/FAQs'} >
+            <SlQuestion />
             FAQs
         </NavLink>
         <NavLink onClick={()=>{setactive('Coming soon')}} className={` h-[47px]  border-t-[0.2px]  p-2 ${active==='Coming soon'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/comingSoon'} >
             Coming soon
         </NavLink>
-        <NavLink onClick={()=>{setactive('Log Out')}} className={` h-[47px]  border-t-[1px]  p-2 ${active==='Log Out'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/logout'} >
+        <NavLink onClick={()=>{setactive('Log Out')}} className={` flex gap-1 items-center h-[47px]  border-t-[1px]  p-2 ${active==='Log Out'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/logout'} >
+            <RiLogoutBoxLine />
             Log Out
         </NavLink>
     </div>
