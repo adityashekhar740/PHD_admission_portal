@@ -1,13 +1,14 @@
 import {BrowserRouter, Route,Routes} from "react-router-dom";
 import Home from './components/Home';
 import Applications from "./components/Applications";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Queries from "./components/Queries";
 import FAQs from "./components/FAQs";
 import Profile from "./components/Profile";
 import AIP from "./components/AIP";
 import QR from "./components/QR";
 import AC from "./components/AC";
+import Apply from "./pages/Apply";
 
 function App  () {
 
@@ -26,9 +27,12 @@ function App  () {
       <Route path="/queries" element={<Queries/>} />
       <Route path="/FAQs" element={<FAQs/>} />
       <Route path="/profile" element={<Profile/>} />
-      <Route path="/comingSoon"  />
+      <Route path="/Applications" element={<Applications/>}  />
       <Route path="/logout"  />
     </Route>
+      <Route path="/Applications/apply" element={<Apply/>}  >
+        
+      </Route>
     </Routes>
     </BrowserRouter>
   )
