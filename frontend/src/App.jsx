@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route index element={<Dashboard />} />
+          <Route  index element={<Dashboard />} />
           <Route path="/dashboard"  element={<Dashboard />}>
             <Route index element={<AIP />} />
             <Route path="Applications-in-progress" element={<AIP />} />
