@@ -1,0 +1,20 @@
+/* Target the horizontal scrollbar */
+div::-webkit-scrollbar {
+  width: 10px; 
+  height: 7px; 
+}
+
+/* Track */
+div::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+div::-webkit-scrollbar-thumb {
+  background: #e45c37; 
+}
+
+/* Handle on hover */
+div::-webkit-scrollbar-thumb:hover {
+  background: #e45c37; 
+}

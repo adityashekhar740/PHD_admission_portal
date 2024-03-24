@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from './Sidebar'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
 
 function Home() {
+  const navigate=useNavigate();
+ 
   return (
    <>
    <Navbar/>
