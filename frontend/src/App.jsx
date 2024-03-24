@@ -9,14 +9,20 @@ import AIP from "./components/AIP";
 import QR from "./components/QR";
 import AC from "./components/AC";
 import Apply from "./pages/Apply";
+import Register from "./pages/Register";
+import Signin from "./pages/Signin";
 
 function App() {
+  (window.location.pathname==='/')?  window.location.pathname='/register':null;
+  console.log('heyyy')
   return (
     // <div>{data && data}</div>
     <BrowserRouter>
       <Routes>
+          <Route  path="/register" element={<Register />} ></Route>
+          <Route  path="/signin" element={<Signin />} ></Route>
         <Route path="/" element={<Home />}>
-          <Route  index element={<Dashboard />} />
+          <Route></Route>
           <Route path="/dashboard"  element={<Dashboard />}>
             <Route index element={<AIP />} />
             <Route path="Applications-in-progress" element={<AIP />} />
