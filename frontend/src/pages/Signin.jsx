@@ -10,9 +10,9 @@ const Signin = () => {
             <img className='h-[100%] w-[100%]  object-cover ' src={bgimg} alt="" />
         </div>
 
-        <div className=' p-[45px] absolute left-[20%] w-[60%] h-[55%] rounded  sm:left-[57%] top-[20%] bg-[#fff] z-[5] sm:w-[30%] sm:h-[60%] ' >
+        <div className='left-[27%] w-[40%] p-[45px] absolute lg:w-[30%] rounded lg:left-[57%] top-[20%] bg-[#fff] z-[5] h-[60%] ' >
             <form action="">
-                <h1 className='font-semibold text-[27px] ' >Sign in</h1>
+                <h1 className='font-semibold text-[27px] uppercase text-gray-800 ' >Sign in</h1>
                 <div className='flex flex-col gap-4 mt-10 ' >
                     <div>
                         <label htmlFor="email">Email address</label>
@@ -27,7 +27,7 @@ const Signin = () => {
                 </div>
                 <span className='text-sm text-gray-600 ' >Don't have an account? <Link to={'/register'} className='text-blue-700 font-semibold ' >Sign up</Link> </span>
                 <div>
-                    <button className=' mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white ' >Register</button>
+                    <button className=' mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white ' >Sign in</button>
                 </div>
                 </div>
             </form>
