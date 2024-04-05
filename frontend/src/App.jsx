@@ -18,7 +18,6 @@ function App() {
   window.location.pathname === "/"
     ? (window.location.pathname = "/register")
     : null;
-  console.log("heyyy");
   return (
     // <div>{data && data}</div>
     <BrowserRouter>
