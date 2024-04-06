@@ -4,8 +4,12 @@ import "./Apply.css";
 import { IoMdArrowDropup } from "react-icons/io";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
+import {useSelector,useDispatch} from 'react-redux';
+import { updateUserStart,updateUserFailure,updateUserSuccess } from "../redux/User/UserSlice";
 function Apply() {
+  const dispatch=useDispatch();
+  const {currentUser,loading,error}=useSelector((state)=>state.user);
+  const [formId,setFormId]=useState('PHD001');
   const [personalDetailDone, setpersonalDetailDone] = useState(false);
   const [ParentDetailDone, setParentDetailDone] = useState(false);
   const [addressDetailDone, setAddressDetailDone] = useState(false);
@@ -55,6 +59,8 @@ function Apply() {
       isPermanentAddress: "",
     },
     declaration: "",
+    userRef:`${currentUser._id}`,
+    formId:`${formId}`
   });
   const handleChange = (e) => {
     if (e.target.id === "noPermanent" || e.target.id === "yesPermanent") {
@@ -128,19 +134,23 @@ const isDeclarationValid=()=>{
 }
 
 const handleSubmit=async()=>{
+  dispatch(updateUserStart());
   try{
     const res=await axios.post('/api/application/submitForm',formData);
-    console.log(res);
+    console.log(res)
+    const res2=await axios.post(`/api/user/formApplied/${currentUser._id}`,{fid:formId});
+    console.log(res2)
+  dispatch(updateUserSuccess(res2.data));
+
   }
   catch(e){
     console.log(e);
+    dispatch(updateUserFailure(e));
   }
 
 }
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+
   return (
     <>
       <Navbar />
