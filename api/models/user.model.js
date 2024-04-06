@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/phd_admission_portal");
-
-const userSchema = mongoose.userSchema(
+const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -17,12 +15,11 @@ const userSchema = mongoose.userSchema(
     password: {
       type: String,
       required: true,
-      unique: true,
     },
   },
   { timestamps: true }
 );
 
-const user=mongoose.model( "User", userSchema );
+const User=mongoose.model( "User", userSchema );
 
-module.exports=user;
+module.exports=User;

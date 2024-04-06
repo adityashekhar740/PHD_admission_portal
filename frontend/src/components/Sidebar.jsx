@@ -5,10 +5,14 @@ import { IoIosChatboxes } from "react-icons/io";
 import { SlQuestion } from "react-icons/sl";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { AiOutlineFileDone } from "react-icons/ai";
-
+import {useNavigate} from 'react-router-dom';
 
 function Sidebar({admin}) {
-  const  [active, setactive] = useState('Dashboard');
+      const  [active, setactive] = useState('Dashboard');
+      const navigate=useNavigate();
+
+     
+  
   return (
     admin?
     <div className=' flex flex-col h-[100%] w-[17%] bg-[#656565]  text-[white] ' >
@@ -19,7 +23,7 @@ function Sidebar({admin}) {
             Candidate Application Form(s)
         </NavLink>
 
-        <NavLink onClick={()=>{setactive('Profile')}} className={` flex gap-1 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='Profile'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/profile'} >
+        <NavLink  onClick={()=>{setactive('Profile')}} className={` flex gap-1 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='Profile'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/profile'} >
             <CiUser />
             Profile
         </NavLink>
@@ -31,7 +35,9 @@ function Sidebar({admin}) {
             <SlQuestion />
             FAQs
         </NavLink>
-        <NavLink onClick={()=>{setactive('Log Out')}} className={` flex gap-1 items-center h-[47px]  border-t-[1px]  p-2 ${active==='Log Out'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/logout'} >
+        <NavLink onClick={()=>{setactive('Log Out')
+        handleLogOut();    
+    }} className={` flex gap-1 items-center h-[47px]  border-t-[1px]  p-2 ${active==='Log Out'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/logout'} >
             <RiLogoutBoxLine />
             Log Out
         </NavLink>
@@ -60,10 +66,7 @@ function Sidebar({admin}) {
             <SlQuestion />
             FAQs
         </NavLink>
-        <NavLink onClick={()=>{setactive('Log Out')}} className={` flex gap-1 items-center h-[47px]  border-t-[1px]  p-2 ${active==='Log Out'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/logout'} >
-            <RiLogoutBoxLine />
-            Log Out
-        </NavLink>
+        
     </div>
   )
 }
