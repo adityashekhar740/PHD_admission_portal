@@ -34,5 +34,14 @@ const Signin=async(req,res)=>{
     res.cookie('access_token',token,{httpOnly:true}).status(200).json(rest);
 }
 
+const Logout=async(req,res)=>{
+    try{
+        res.clearCookie( 'access_token');
+        res.status(200).json('Logged Out SUCCESSFULLY');
+    }
+    catch(e){
+        res.status(500).json('UNABLE TO lOG OUT');
+    }
+}
 
-module.exports={Signup,Signin};
+module.exports={Signup,Signin,Logout};

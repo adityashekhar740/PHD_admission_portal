@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import "./Apply.css";
 import { IoMdArrowDropup } from "react-icons/io";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function Apply() {
   const [personalDetailDone, setpersonalDetailDone] = useState(false);
@@ -34,22 +35,17 @@ function Apply() {
       stream: "",
       program: "",
       title: "",
-      firstname: "",
-      middlename: "",
-      lastname: "",
+      fullname:"",
       email: "",
       Mobile: 0,
       dob: "",
       gender: "",
-      nationality: "",
-      caste: "",
+     
     },
     parentDetails: {
-      Ftitle: "",
       Fname: "",
       Fmobile: 0,
       Fmail: "",
-      Mtitle: "",
       Mname: "",
       Mmobile: 0,
       Mmail: "",
@@ -111,6 +107,36 @@ function Apply() {
   const handleChange4 = (e) => {
     setFormData({ ...formData, declaration: e.target.checked });
   };
+
+const isPersonalDetailsValid = () => {
+  const { title, fullname, email, Mobile, dob, gender } = formData.personalDetails;
+  return title !== '' && fullname !== '' && email !== '' && Mobile !== 0 && dob !== '' && gender !== '';
+};
+
+const isParentDetailsValid=()=>{
+  const { Fname,Fmobile,Fmail,Mname,Mmobile,Mmail}=formData.parentDetails;
+  return  Fname !== '' && Fmobile !== 0 && Fmail !== '' && Mname !== '' && Mmobile !== 0 && Mmail !== '';
+}
+
+const isAddressDetailsValid=()=>{
+  const {address,isPermanentAddress}=formData.addressDetails;
+  return address!='' && isPermanentAddress!='';
+}
+
+const isDeclarationValid=()=>{
+  return  formData.declaration;
+}
+
+const handleSubmit=async()=>{
+  try{
+    const res=await axios.post('/api/application/submitForm',formData);
+    console.log(res);
+  }
+  catch(e){
+    console.log(e);
+  }
+
+}
 
   useEffect(() => {
     console.log(formData);
@@ -207,7 +233,8 @@ function Apply() {
           </div>
           <div className="w-[100%] py-4 px-3  bg-white mt-5 border-solid border-gray-300 border-[0.5px] ">
             <div id="programDetails">
-              <h1 className="text-lg text-[#e45c37] mb-4 font-semibold ">
+              <form action="">
+                <h1 className="text-lg text-[#e45c37] mb-4 font-semibold ">
                 Program Details
               </h1>
               <div className="flex gap-4 my-4 justify-evenly ">
@@ -327,8 +354,8 @@ function Apply() {
                       </select>
                     </div>
                     <div className="flex flex-col gap-1 w-[24%]">
-                      <label htmlFor="firstname">First Name</label>
-                      <input
+                      <label htmlFor="fullname">Full Name</label>
+                      <input required
                         onChange={(e) => {
                           handleChange(e);
                         }}
@@ -336,42 +363,18 @@ function Apply() {
                         type="text"
                         name=""
                         placeholder="Firstname"
-                        id="firstname"
+                        id="fullname"
                       />
                     </div>
-                    <div className="flex flex-col gap-1 w-[22%]">
-                      <label htmlFor="middlename">Middle Name</label>
-                      <input
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
-                        className="py-2 px-1  border "
-                        type="text"
-                        name=""
-                        placeholder="Middlename"
-                        id="middlename"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1 w-[22%]">
-                      <label htmlFor="lastname">Last Name</label>
-                      <input
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
-                        className="py-2 px-1  border "
-                        type="text"
-                        name=""
-                        placeholder="Lastname"
-                        id="lastname"
-                      />
-                    </div>
+                  
+                 
                   </div>
                   {/*  end of first row */}
 
                   <div className="flex gap-4 justify-evenly ">
                     <div className="flex flex-col gap-1 w-[22%]">
                       <label htmlFor="email">Student E-mail ID</label>
-                      <input
+                      <input required
                         onChange={(e) => {
                           handleChange(e);
                         }}
@@ -384,7 +387,7 @@ function Apply() {
                     </div>
                     <div className="flex flex-col gap-1 w-[24%]">
                       <label htmlFor="Mobile">Mobile No</label>
-                      <input
+                      <input required
                         onChange={(e) => {
                           handleChange(e);
                         }}
@@ -397,7 +400,7 @@ function Apply() {
                     </div>
                     <div className="flex flex-col gap-1 w-[22%]">
                       <label htmlFor="dob">Date of Birth</label>
-                      <input
+                      <input required
                         onChange={(e) => {
                           handleChange(e);
                         }}
@@ -410,7 +413,7 @@ function Apply() {
                     </div>
                     <div className="flex flex-col gap-1 w-[22%]">
                       <label htmlFor="gender">Gender</label>
-                      <select
+                      <select required
                         onChange={(e) => {
                           handleChange(e);
                         }}
@@ -426,54 +429,35 @@ function Apply() {
                     </div>
                   </div>
                   <div className="flex  justify-start pl-4 gap-7 ">
-                    <div className="flex flex-col gap-1 w-[22%]">
-                      <label htmlFor="nationality">Nationality</label>
-                      <input
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
-                        className="py-2 px-1  border "
-                        type="text"
-                        name=""
-                        placeholder="Nationality"
-                        id="nationality"
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1 w-[22%]">
-                      <label htmlFor="caste">Caste Category</label>
-                      <select
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
-                        className="border py-2 px-1"
-                        name=""
-                        id="caste"
-                      >
-                        <option value="">select</option>
-                        <option value="General">General</option>
-                        <option value="OBC">OBC</option>
-                        <option value="SC">SC</option>
-                        <option value="St">ST</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
+                   
+                    
                   </div>
                 </div>
                 {/*  end of second row */}
               </div>
               <div className="flex w-full justify-center my-[50px]  ">
                 <button
-                  disabled={personalDetailDone}
-                  onClick={() => {
-                    setpersonalDetailDone(true);
-                    setpercentDone(12);
-                  }}
-                  className=" disabled:opacity-80 w-[15%] bg-[#e45c37] text-white py-2 px-1 rounded-sm "
-                >
-                  Next
-                </button>
+  
+  onClick={(e) => {
+    e.preventDefault();
+    if (isPersonalDetailsValid()) {
+      setpersonalDetailDone(true);
+      setpercentDone(12);
+
+    } else {
+      alert('Please fill out all required fields.');
+    }
+  }}
+  className=" disabled:opacity-80 w-[15%] bg-[#e45c37] text-white py-2 px-1 rounded-sm "
+>
+  Next
+</button>
+
               </div>
+              </form>
+
+
+              {/* ************************************************************************************* */}
               {personalDetailDone ? (
                 <div>
                   {/* father's details */}
@@ -483,21 +467,7 @@ function Apply() {
                       Father's Details{" "}
                     </h1>
                     <div className="flex gap-4 justify-evenly ">
-                      <div className="flex flex-col gap-1 w-[22%]">
-                        <label htmlFor="Ftitle">Title</label>
-                        <select
-                          onChange={(e) => {
-                            handleChange2(e);
-                          }}
-                          className="border py-2 px-1"
-                          name=""
-                          id="Ftitle"
-                        >
-                          <option value="">select</option>
-                          <option value="Mr">Mr</option>
-                          <option value="Dr">Dr</option>
-                        </select>
-                      </div>
+                      
                       <div className="flex flex-col gap-1 w-[24%]">
                         <label htmlFor="Fname">Father's Name</label>
                         <input
@@ -547,21 +517,7 @@ function Apply() {
                       Mother's Details{" "}
                     </h1>
                     <div className="flex gap-4 justify-evenly ">
-                      <div className="flex flex-col gap-1 w-[22%]">
-                        <label htmlFor="Mtitle">Title</label>
-                        <select
-                          onChange={(e) => {
-                            handleChange2(e);
-                          }}
-                          className="border py-2 px-1"
-                          name=""
-                          id="Mtitle"
-                        >
-                          <option value="">select</option>
-                          <option value="Mrs">Mrs</option>
-                          <option value="Dr">Dr</option>
-                        </select>
-                      </div>
+                      
                       <div className="flex flex-col gap-1 w-[24%]">
                         <label htmlFor="Mname">Mother's Name</label>
                         <input
@@ -604,10 +560,16 @@ function Apply() {
                     </div>
                     <div className="flex w-full justify-center my-[50px]  ">
                       <button
+                      type="submit"
                         disabled={ParentDetailDone}
                         onClick={() => {
-                          setParentDetailDone(true);
+                          if(isParentDetailsValid()){
+                            setParentDetailDone(true);
                           setpercentDone(31);
+                          }
+                          else{
+                            alert('Please fill out all required fields.');
+                          }
                         }}
                         className=" disabled:opacity-85 w-[15%] bg-[#e45c37] text-white py-2 px-1 rounded-sm "
                       >
@@ -666,8 +628,13 @@ function Apply() {
                       <button
                         disabled={addressDetailDone}
                         onClick={() => {
+                          if(isAddressDetailsValid()){
                           setAddressDetailDone(true);
                           setpercentDone(53);
+                          }
+                          else{
+                            alert('Please fill out all required fields.');
+                          }
                         }}
                         className=" disabled:opacity-85 w-[15%] bg-[#e45c37] text-white py-2 px-1 rounded-sm "
                       >
@@ -686,23 +653,29 @@ function Apply() {
                       Declaration
                     </h1>
                     <div className="flex items-start gap-4 justify-evenly px-4  ">
-                      <input
+                      <input required
                         className="w-[1.7%] mt-2  "
                         onChange={(e) => handleChange4(e)}
                         type="checkbox"
                         name=""
                         id="declared"
                       />
-                      i hereby declare that the information given above is true
+                     <label htmlFor="declared"> i hereby declare that the information given above is true
                       and correct. I understand that any misrepresentation or
-                      false statement may lead to severe consequences.
+                      false statement may lead to severe consequences.</label>
                     </div>
                     <div className="flex w-full justify-center my-[50px]  ">
                       <button
-                        disabled={declarationDone}
+                        // disabled={declarationDone}
                         onClick={() => {
-                          setDeclarationDone(true);
+                          if(isDeclarationValid()){
+                            setDeclarationDone(true);
                           setpercentDone(100);
+                          handleSubmit();
+                          }
+                          else{
+                            alert('please  check the box to agree with our declaration.');
+                          }
                         }}
                         className=" disabled:opacity-85 w-[15%] bg-green-600 text-white py-2 px-1 rounded-sm "
                       >

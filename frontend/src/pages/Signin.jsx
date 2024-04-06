@@ -2,25 +2,32 @@ import React, { useEffect, useState } from 'react'
 import bgimg from '../assets/bgimg.jpg';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {useDispatch, useSelector} from "react-redux";
+import { signinstart,signinsuccess,signinfailure } from '../redux/User/UserSlice';
 
 const Signin = () => {
+    const dispatch=useDispatch();
+    const {currentUser,loading,error}=useSelector((state)=>state.user);
     const navigate=useNavigate();
      const [formData, setformData] = useState({
     username:'',
     password: '',
   })
 
-
+ 
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
+        dispatch(signinstart());
          try{
             const res=await axios.post('/api/auth/signin',formData);
-            console.log(res);
+            dispatch(signinsuccess(res.data));
+
             navigate('/dashboard');
         }
         catch(e){
             console.log(e);
+            dispatch(signinfailure(e));
         }
        }
 

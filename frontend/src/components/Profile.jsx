@@ -1,15 +1,17 @@
+import axios  from "axios";
 import React, { useState } from "react";
-
+import {useSelector,useDispatch} from 'react-redux';
+import {updateUserFailure,updateUserStart,updateUserSuccess} from '../redux/User/UserSlice';
 function Profile() {
+  const dispatch=useDispatch();
+  const {currentUser,loading,error}=useSelector((state)=>state.user);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: 0,
-    alternateNumber:0,
-    state: "",
-    city: "",
+    username: `${currentUser.username}`,
+    email: `${currentUser.email}`,
   });
 
+
+  console.log(formData)
   const handleChange = (e) => {
    
     const { name } = e.target;
@@ -19,10 +21,16 @@ function Profile() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    try{
+      const res=await axios.post(`api/user/updateUser/${currentUser._id}`,formData);
+      console.log(res);
+    }
+    catch(e){
+      console.log(e);
+    }
     
-    console.log(formData);
   };
   return (
     <div className="flex flex-col items-center bg-[#eaeaea] p-4 max-w-[83%]  ">
@@ -43,10 +51,10 @@ function Profile() {
             Candidate's Name
           </label>
           <input
+          defaultValue={currentUser.username}
             type="text"
             id="name"
             name="name"
-            value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
@@ -60,13 +68,14 @@ function Profile() {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
+            defaultValue={currentUser.email}
             onChange={handleChange}
             placeholder="Enter your email"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
           />
         </div>
-        <div className="mb-4 flex items-center">
+        
+        {/* <div className="mb-4 flex items-center">
           <label
             htmlFor="phoneNumber"
             className="mr-4 flex justify-end w-[160px] "
@@ -74,6 +83,7 @@ function Profile() {
             Candidate's Phone Number
           </label>
           <input
+          defaultValue={currentUser.}
             type="number"
             id="phoneNumber"
             name="phoneNumber"
@@ -82,8 +92,8 @@ function Profile() {
             placeholder="Enter your phone number"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
           />
-        </div>
-        <div className="mb-4 flex items-center">
+        </div> */}
+        {/* <div className="mb-4 flex items-center">
           <label
             htmlFor="phoneNumber"
             className="mr-4 flex justify-end w-[160px] "
@@ -99,8 +109,8 @@ function Profile() {
             placeholder="Enter your phone number"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
           />
-        </div>
-        <div className="mb-4 flex items-center">
+        </div> */}
+        {/* <div className="mb-4 flex items-center">
           <label htmlFor="state" className="mr-4 flex justify-end w-[160px] ">
             State
           </label>
@@ -113,8 +123,8 @@ function Profile() {
             placeholder="Enter your state"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
           />
-        </div>
-        <div className="mb-4 flex items-center">
+        </div> */}
+        {/* <div className="mb-4 flex items-center">
           <label htmlFor="city" className="mr-4 flex justify-end w-[160px] ">
             City
           </label>
@@ -127,9 +137,10 @@ function Profile() {
             placeholder="Enter your city"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
           />
-        </div>
+        </div> */}
         <div className="mb-4 flex items-center pl-[175px] gap-4 mt-5 ">
           <button
+          onClick={()=>{handleSubmit()}}
             type="submit"
             className="bg-[#e45c37] text-[13px] text-white font-semibold px-4 py-2 rounded-md hover:opacity-85"
           >

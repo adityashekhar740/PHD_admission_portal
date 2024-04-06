@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import Signin from "./pages/Signin";
 import Admin_home from "./pages/Admin_home";
 import Candi_Applications from "./components/Candi_Applications";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
   window.location.pathname === "/"
@@ -30,7 +31,8 @@ function App() {
         <Route path="/signin" element={<Signin />}></Route>
 
         <Route path="/" element={<Home />}>
-          <Route path="/dashboard" element={<Dashboard />}>
+          <Route element={<PrivateRoutes/>} >
+            <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<AIP />} />
             <Route path="Applications-in-progress" element={<AIP />} />
             <Route path="Application-completed" element={<AC />} />
@@ -41,7 +43,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/Applications" element={<Applications />} />
           <Route path="/logout" />
-           
+            </Route>          
 
             </Route>
         <Route path="/Applications/apply" element={<Apply />}></Route>
