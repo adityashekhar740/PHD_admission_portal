@@ -30,7 +30,7 @@ function AIP() {
         ))
          }
         </div>
-        :<h1>YOU HAVEN'T APPLIED ANYWHERE YET...</h1>
+        :<h1 className='text-center' >YOU HAVEN'T APPLIED ANYWHERE YET...</h1>
         :<h1>
           Loading...
         </h1>

@@ -21,9 +21,13 @@ formId:{
     required:true
 },
 status:{
-    type:String, //pending/accepted/rejected
+    type:String, //pending/accepted/rejected/MFR
     default:"pending"
-}
+},
+date:{
+    type:Date,
+    default:Date.now
+},
 },{timestamps:true});
 
 const Application= mongoose.model("Application",applicationSchema);

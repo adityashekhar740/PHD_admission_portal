@@ -15,7 +15,7 @@ function Sidebar({admin}) {
   
   return (
     admin?
-    <div className=' flex flex-col h-[100%] w-[17%] bg-[#656565]  text-[white] ' >
+    <div className=' flex flex-col h-[100%] w-[17%] bg-[#656565]  text-[white] z-1 ' >
         
 
         <NavLink onClick={()=>{setactive('Dashboard')}} className={` h-[47px] flex gap-1 items-center  border-t-[0.2px]  p-2 ${active==='Dashboard'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/admin/AdminDashboard'} >
