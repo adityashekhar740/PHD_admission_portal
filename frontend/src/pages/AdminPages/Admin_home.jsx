@@ -10,7 +10,7 @@ function Admin_home() {
   return (
     <>
     <Navbar/>
-    <div className='flex h-[100vh] w-[100%] ' >
+    <div className='flex h-[100vh] w-[100%] z-1 ' >
         <Sidebar admin={true} />
         <Outlet/>
     </div>

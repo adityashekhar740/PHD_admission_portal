@@ -141,6 +141,7 @@ const handleSubmit=async()=>{
     const res2=await axios.post(`/api/user/formApplied/${currentUser._id}`,{fid:formId});
     console.log(res2)
   dispatch(updateUserSuccess(res2.data));
+  alert('APPLIED SUCCESSFULLY 🎉');
 
   }
   catch(e){

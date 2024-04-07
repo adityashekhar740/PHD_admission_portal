@@ -1,9 +1,10 @@
 const express=require('express');
 const Router=express.Router();
-const {Signin,Signup,Logout,GetAllApplication} = require('../controllers/Admin.controller');
+const {Signin,Signup,Logout,GetAllApplication,SetStatus,GetAllApproved} = require('../controllers/Admin.controller');
 Router.post('/auth/signup',Signup);
 Router.post('/auth/signin',Signin);
 Router.get('/auth/logout',Logout);
 Router.get('/application/getAll',GetAllApplication);
-
+Router.post('/setStatus/:id',SetStatus);
+Router.get('/application/getAllApproved',GetAllApproved);
 module.exports=Router;

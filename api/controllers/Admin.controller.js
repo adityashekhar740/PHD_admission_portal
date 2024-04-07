@@ -1,4 +1,5 @@
 const AdminModel=require('../models/Admin.model');
+const ApplicationModel=require('../models/application.model');
 const bcrypt=require('bcryptjs');
 var jwt = require("jsonwebtoken");
 const Signup=async(req,res)=>{
@@ -40,7 +41,41 @@ const Logout=async(req,res)=>{
     }
 }
 const GetAllApplication=async(req,res)=>{
+    try{
+        const all=await ApplicationModel.find({
+        status:{$in:['pending','MFR']},
+    });
+    res.status(200).json(all);
+    }
+    catch(e){
+        res.status(500).json('ERROR WHILE FETCHING INFO...');
+    }
+}
+const SetStatus=async(req,res)=>{
+    try{
+        const updatedAppn=await ApplicationModel.findByIdAndUpdate(req.params.id,{
+            $set:{
+                status:req.body.status
+            }
+        },{new:true})
+        res.status(200).json(updatedAppn);
+    }
+    catch(e){
+        res.status(500).json("CAN'T UPDATE STATUS");
+    }
+}
+const GetAllApproved=async(req,res)=>{
+     try{
+        const allapp=await ApplicationModel.find({
+        status:'accepted',
+    });
+    console.log(allapp);
+    res.status(200).json(allapp);
+    }
+    catch(e){
+        res.status(500).json('ERROR WHILE FETCHING INFO...');
+    }
     
 }
 
-module.exports={Signin,Signup,Logout,GetAllApplication};
+module.exports={Signin,Signup,Logout,GetAllApplication,SetStatus,GetAllApproved};

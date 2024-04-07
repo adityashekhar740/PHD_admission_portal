@@ -32,7 +32,7 @@ function Navbar({fileRef}) {
       }
 
   return (
-    <div className='h-[59px] bg-[#fafbfc] px-4 flex justify-between shadow-lg ' >
+    <div className='h-[59px] bg-[#fafbfc] px-4 flex justify-between shadow-lg z-1 ' >
       
         <div>
             <img src={mujLogo} alt="" />
