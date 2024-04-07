@@ -8,7 +8,6 @@ import {Navigate} from 'react-router-dom';
 function Home() {
     const {currentUser,loading,error}=useSelector((state)=>state.user);
   const navigate=useNavigate();
-  const fileRef=useRef(null);
  
   return (
    <>

@@ -39,5 +39,8 @@ const Logout=async(req,res)=>{
         res.status(500).json('Error in logging out');
     }
 }
+const GetAllApplication=async(req,res)=>{
+    
+}
 
-module.exports={Signin,Signup,Logout};
+module.exports={Signin,Signup,Logout,GetAllApplication};
