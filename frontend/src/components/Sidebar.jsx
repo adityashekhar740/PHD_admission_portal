@@ -18,7 +18,7 @@ function Sidebar({admin}) {
     <div className=' flex flex-col h-[100%] w-[17%] bg-[#656565]  text-[white] ' >
         
 
-        <NavLink onClick={()=>{setactive('AllApplicationForms')}} className={` h-[47px] flex gap-1 items-center  border-t-[0.2px]  p-2 ${active==='AllApplicationForms'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/admin/Candidate-Applications'} >
+        <NavLink onClick={()=>{setactive('Dashboard')}} className={` h-[47px] flex gap-1 items-center  border-t-[0.2px]  p-2 ${active==='Dashboard'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/admin/AdminDashboard'} >
             <AiOutlineFileDone/>
             Candidate Application Form(s)
         </NavLink>
@@ -35,12 +35,7 @@ function Sidebar({admin}) {
             <SlQuestion />
             FAQs
         </NavLink>
-        <NavLink onClick={()=>{setactive('Log Out')
-        handleLogOut();    
-    }} className={` flex gap-1 items-center h-[47px]  border-t-[1px]  p-2 ${active==='Log Out'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/logout'} >
-            <RiLogoutBoxLine />
-            Log Out
-        </NavLink>
+       
     </div>
     :<div className=' flex flex-col h-[100%] w-[17%] bg-[#656565]  text-[white] ' >
         

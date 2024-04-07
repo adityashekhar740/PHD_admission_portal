@@ -11,6 +11,18 @@ addressDetails:{
 },
 declaration:{
     type:String
+},
+userRef:{
+    type:String,
+    required:true
+},
+formId:{
+    type:String,
+    required:true
+},
+status:{
+    type:String, //pending/accepted/rejected
+    default:"pending"
 }
 },{timestamps:true});
 

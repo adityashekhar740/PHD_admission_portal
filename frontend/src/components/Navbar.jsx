@@ -13,9 +13,16 @@ function Navbar({fileRef}) {
     const handleLogOut=async()=>{
       dispatch(signOutStart());
         try{
-            const res=await axios.get('/api/auth/logout');
+            if(currentUser.name){
+              const res=await axios.get('/api/admin/auth/logout');
+          dispatch(signOutSuccess());
+            navigate('/admin-signin');
+            }
+            else{
+              const res=await axios.get('/api/auth/logout');
           dispatch(signOutSuccess());
             navigate('/signin');
+            }
             
         }
         catch(e){
@@ -36,7 +43,7 @@ function Navbar({fileRef}) {
           }} className='text-blue-600  hover:underline' >Log Out</button>
         <div onClick={(e)=>{handleClick(e)}} className=' cursor-pointer border-x-2 flex items-center font-semibold px-3 text-[18px] ' >
           
-            Welcome {currentUser.username}
+            Welcome {currentUser.username?currentUser.username:currentUser.name}
         </div>
         </div>
     </div>

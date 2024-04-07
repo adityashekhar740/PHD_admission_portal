@@ -11,7 +11,6 @@ function Profile() {
   });
 
 
-  console.log(formData)
   const handleChange = (e) => {
    
     const { name } = e.target;
@@ -23,11 +22,14 @@ function Profile() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    dispatch(updateUserStart());
     try{
       const res=await axios.post(`api/user/updateUser/${currentUser._id}`,formData);
+      dispatch(updateUserSuccess(res.data));
       console.log(res);
     }
     catch(e){
+      dispatch(updateUserFailure(e));
       console.log(e);
     }
     
@@ -45,7 +47,7 @@ function Profile() {
         </p>
       </div>
       <div className="w-full bg-[#afadad] h-[1px] my-5 mb-7 "></div>
-      <form onSubmit={handleSubmit} className="w-full max-w-2xl min-h-[450px] ">
+      <form  className="w-full max-w-2xl min-h-[450px] ">
         <div className="mb-4 flex items-center  ">
           <label htmlFor="name" className="   mr-4 w-[160px] flex justify-end ">
             Candidate's Name
@@ -53,8 +55,8 @@ function Profile() {
           <input
           defaultValue={currentUser.username}
             type="text"
-            id="name"
-            name="name"
+            id="username"
+            name="username"
             onChange={handleChange}
             placeholder="Enter your name"
             className="w-[400px] px-3 py-2 border rounded-md outline-none focus:border-blue-500"
@@ -140,7 +142,7 @@ function Profile() {
         </div> */}
         <div className="mb-4 flex items-center pl-[175px] gap-4 mt-5 ">
           <button
-          onClick={()=>{handleSubmit()}}
+          onClick={(e)=>{handleSubmit(e)}}
             type="submit"
             className="bg-[#e45c37] text-[13px] text-white font-semibold px-4 py-2 rounded-md hover:opacity-85"
           >
