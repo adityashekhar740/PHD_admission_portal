@@ -32,5 +32,17 @@ const GetInProgressForms=async(req,res)=>{
         res.status(500).json('SOMETHING WENT WRONG');
     }
 }
+const GetCompletedForms=async(req,res)=>{
+    try{
+        const appns=await ApplicationModel.find({
+            userRef:req.params.id,
+            status:{$in:['accepted','rejected']},
+        })
+        res.status(200).json(appns);
+    }
+    catch(e){
+        res.status(500).json('SOMETHING WENT WRONG');
+    }
+}
 
-module.exports={submitForm,GetInProgressForms}
+module.exports={submitForm,GetInProgressForms,GetCompletedForms}

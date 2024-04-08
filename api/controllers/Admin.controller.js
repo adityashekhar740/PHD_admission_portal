@@ -78,4 +78,16 @@ const GetAllApproved=async(req,res)=>{
     
 }
 
-module.exports={Signin,Signup,Logout,GetAllApplication,SetStatus,GetAllApproved};
+const GetAllRejected=async(req,res)=>{
+    try{
+        const allappn=await ApplicationModel.find({
+            status:'rejected'
+        }) 
+        res.status(200).json(allappn);
+    }
+    catch(e){
+        res.status(500).json('ERROR WHILE FETCHING INFO...');
+    }
+}
+
+module.exports={Signin,Signup,Logout,GetAllApplication,SetStatus,GetAllApproved,GetAllRejected};
