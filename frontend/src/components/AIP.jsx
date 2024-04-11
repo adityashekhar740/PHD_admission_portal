@@ -11,6 +11,7 @@ function AIP() {
      try{
        const res=await axios.get(`/api/application/getInProgressForms/${currentUser._id}`);
        setforms(res.data);
+       console.log(res);
      }
      catch(e){
       console.log(e);
@@ -26,12 +27,12 @@ function AIP() {
         <div>
          {
            forms.map((form)=>(
-          <FormCard dashboard={true} AIP={true} />
+          <FormCard form={form} dashboard={true} AIP={true} />
         ))
          }
         </div>
-        :<h1 className='text-center' >YOU HAVEN'T APPLIED ANYWHERE YET...</h1>
-        :<h1>
+        :<h1 className='text-center' >YOU HAVEN'T APPLIED ANYWHERE YET...</h1>:
+        <h1>
           Loading...
         </h1>
       }

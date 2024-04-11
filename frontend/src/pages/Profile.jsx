@@ -26,7 +26,8 @@ function Profile() {
     try{
       const res=await axios.post(`api/user/updateUser/${currentUser._id}`,formData);
       dispatch(updateUserSuccess(res.data));
-      console.log(res);
+      alert('PROFILE UPDATED SUCCESSFULLY');
+      window.location.reload();
     }
     catch(e){
       dispatch(updateUserFailure(e));

@@ -8,7 +8,7 @@ function AppnModal({ app, setModelOpen }) {
     try{
       const res=await axios.post(`/api/admin/setStatus/${y}`,{status:x});
     setModelOpen(false);
-    navigate('/admin/AdminDashboard');
+    window.location.reload();
     }
     catch(e){
       console.log(e);
@@ -30,7 +30,9 @@ function AppnModal({ app, setModelOpen }) {
               >
                 &times;
               </span>
-              <span onClick={()=>{handleClick('pending',app._id)}} className="text-lg py-2 cursor-pointer " >📌Unpin</span>
+              {
+                app.status==='MFR'?<span onClick={()=>{handleClick('pending',app._id)}} className="text-lg py-2 cursor-pointer " >📌Unpin</span>:null
+              }
             </div>
             <div className="mx-auto text-[18px] font-semibold ml-[30%] ">
               PHD APPLICATION FORM 2024{" "}

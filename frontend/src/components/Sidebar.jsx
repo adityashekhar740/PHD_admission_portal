@@ -27,9 +27,9 @@ function Sidebar({admin}) {
             <CiUser />
             Profile
         </NavLink>
-        <NavLink onClick={()=>{setactive('My Queries')}} className={` flex gap-1 items-center h-[47px]  border-t-[0.2px]  p-2 ${active==='My Queries'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/queries'} >
+        <NavLink onClick={()=>{setactive('My Queries')}} className={` flex gap-1 items-center h-[47px]  border-t-[0.2px]  p-2 ${active==='My Queries'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/admin/Queries'} >
             <IoIosChatboxes />
-             Queries
+             Queries 
         </NavLink>
         <NavLink onClick={()=>{setactive('FAQs')}} className={` flex gap-2 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='FAQs'?'bg-[#e45c37]':'bg-[#656565]'}  `}to={'/FAQs'} >
             <SlQuestion />
