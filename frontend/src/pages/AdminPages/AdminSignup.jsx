@@ -45,17 +45,17 @@ const AdminSignup = () => {
                 <div className='flex flex-col gap-4 mt-6 ' >
                     <div>
                         <label htmlFor="email">Name</label>
-                <input onChange={(e)=>{handleChange(e)}} className='w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid '  type="text" name="name" id="name" />
+                <input onChange={(e)=>{handleChange(e)}} className=' outline-none w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid '  type="text" name="name" id="name" />
                     </div>
                     <div>
                         <label htmlFor="email">Email</label>
                 <br />
-                <input onChange={(e)=>{handleChange(e)}} className='w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid '  type="email" name="email" id="email" />
+                <input onChange={(e)=>{handleChange(e)}} className=' outline-none w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid '  type="email" name="email" id="email" />
                     </div>
                 <div>
                     <label htmlFor="password">Password</label>
                 <br />
-                <input onChange={(e)=>{handleChange(e)}} className='w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid ' type="password" name="password" id="password" />
+                <input onChange={(e)=>{handleChange(e)}} className=' outline-none w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid ' type="password" name="password" id="password" />
                 </div>
                 <span className='text-sm text-gray-600 ' >Don't have an account? <Link to={'/register'} className='text-blue-700 font-semibold ' >Sign up</Link> </span>
                 <div>

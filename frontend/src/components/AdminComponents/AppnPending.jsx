@@ -9,7 +9,6 @@ function AppPending() {
     const fetch_data = async () => {
       try {
         const res = await axios.get("/api/admin/application/getAll");
-        console.log(res);
         setApps(res.data);
       } catch (e) {
         console.log(e);

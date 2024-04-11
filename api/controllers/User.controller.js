@@ -1,6 +1,9 @@
 const UserModel = require('../models/user.model');
 
 const UpdateUser = async (req, res) => {
+     if (req.params.id !== req.user.id) {
+    return res.status(403).json("YOU CAN ONLY UPDATE YOUR OWN INFORMATION");
+  }
     const { username, email } = req.body;
     try {
         const user = await UserModel.findByIdAndUpdate(
@@ -21,6 +24,9 @@ const UpdateUser = async (req, res) => {
 }
 
 const FormApplied=async(req,res)=>{
+     if (req.params.id !== req.user.id) {
+    return res.status(403).json("YOU CAN ALTER YOUR OWN INFORMATION");
+  }
     const {fid}=req.body;
    try{
      const user=await UserModel.findByIdAndUpdate(req.params.id,

@@ -13,12 +13,14 @@ const cookieParser=require('cookie-parser');
 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
+//  this cookieParser should always be used before routes routes should be defined after this 
 app.use('/api/auth',authRouter);
 app.use('/api/application',ApplicationRouter);
 app.use('/api/user',UserRouter);
 app.use('/api/admin',AdminRouter);
 
-app.use(cookieParser());
+
 
 mongoose.connect(`${process.env.PASS_KEY}`).then(()=>{
     console.log('db connected');

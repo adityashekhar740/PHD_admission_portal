@@ -4,6 +4,9 @@ const jwt=require('jsonwebtoken');
 
 const Signup=async(req,res)=>{
     const {username,email,password}=req.body;
+    if(!username || !email || !password){
+        return res.status(400).json('Please enter All the fields');
+    }
    try{
     const hashedPassword=bcrypt.hashSync(password,10);
      const user=await UserModel.create({
@@ -14,12 +17,15 @@ const Signup=async(req,res)=>{
     res.status(200).json(user);
    }
    catch(e){
-    res.status(500).json('unable to create user');
+    res.status(500).json('Some error occured or change the credentials');
    }
 }
 
 const Signin=async(req,res)=>{
     const {username,password}=req.body;
+    if(!username || !password){
+        return res.status(400).json('PLEASE ENTER ALL FIELDS')
+    }
     const user=await UserModel.findOne({username:username});
     if(!user){
         return res.status(401).json('USER  NOT FOUND');
