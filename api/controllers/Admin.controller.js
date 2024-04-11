@@ -2,6 +2,7 @@ const AdminModel=require('../models/Admin.model');
 const ApplicationModel=require('../models/application.model');
 const bcrypt=require('bcryptjs');
 var jwt = require("jsonwebtoken");
+const QueryModel =require('../models/Queries.Model');
 const Signup=async(req,res)=>{
     const {name,email,password}=req.body;
     const hashedPassword=bcrypt.hashSync(password,10);
@@ -90,4 +91,29 @@ const GetAllRejected=async(req,res)=>{
     }
 }
 
-module.exports={Signin,Signup,Logout,GetAllApplication,SetStatus,GetAllApproved,GetAllRejected};
+const AllQueries=async(req,res)=>{
+    try{
+        const all=await QueryModel.find({
+            response:'pending'
+        }).sort({createdAt:-1});
+        res.status(200).json(all);
+    }
+    catch(e){
+        res.status(500).json('SOME ERROR OCCURED');
+    }   
+}
+const ReplyQuery=async(req,res)=>{
+    try{
+        const Query=await QueryModel.findByIdAndUpdate(req.params.id,{
+            $set:{
+                response:req.body.response
+            }
+        },{new:true})
+        res.status(200).json(Query);
+    }
+    catch(e){
+        res.status(500).json('ERRORR OCCORED');
+    }
+}
+
+module.exports={Signin,Signup,Logout,GetAllApplication,SetStatus,GetAllApproved,GetAllRejected,AllQueries,ReplyQuery};

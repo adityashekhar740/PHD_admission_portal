@@ -1,4 +1,6 @@
 const UserModel = require('../models/user.model');
+const QueryModel= require('../models/Queries.Model');
+
 
 const UpdateUser = async (req, res) => {
      if (req.params.id !== req.user.id) {
@@ -46,4 +48,35 @@ const FormApplied=async(req,res)=>{
    }
 }
 
-module.exports = { UpdateUser,FormApplied };
+const RaiseQuery=async(req,res)=>{
+    if(req.user.id!=req.params.id){
+        return res.status(403).json('YOU CAN ONLY RAISE A QUERY FROM YOUR OWN ACCOUNT');
+    }    
+    const {name,queryDescription,queryCategory,program}=req.body;
+    try{
+        const Query=await QueryModel.create({
+            name,
+            queryDescription,
+             queryCategory,
+             program,
+             userRef:req.params.id
+        })
+        console.log(Query);
+        res.status(200).json(Query);
+    }
+    catch(e){
+        res.status(500).json('UNABLE TO RAISE QUERY');
+    }
+}
+
+const GetRaisedQueries=async(req,res)=>{
+    try{    
+        const data=await QueryModel.find({userRef: req.params.id}).sort({createdAt:-1});
+        res.status(200).json(data);
+    }
+    catch(e){
+        res.status(500).json('THERE WAS A PROBLEM WHILE FETCHING  THE DATA');
+    }
+}
+
+module.exports = { UpdateUser,FormApplied,RaiseQuery,GetRaisedQueries };

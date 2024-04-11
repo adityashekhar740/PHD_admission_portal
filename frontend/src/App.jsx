@@ -23,30 +23,28 @@ import AppnPending from "./components/AdminComponents/AppnPending";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import AdminQueries from "./pages/AdminPages/AdminQueries";
 function App() {
   const { currentUser } = useSelector((state) => state.user);
 
-  
- if(window.location.pathname==='/'){
-  if(currentUser!==null){
-    if(currentUser.username){
-    window.location.pathname='/dashboard';
-    }
-    else{
-    window.location.pathname='/admin/AdminDashboard';
+  if (window.location.pathname === "/") {
+    if (currentUser !== null) {
+      if (currentUser.username) {
+        window.location.pathname = "/dashboard";
+      } else {
+        window.location.pathname = "/admin/AdminDashboard";
+      }
+    } else {
+      window.location.pathname = "/register";
     }
   }
-  else{
-    window.location.pathname='/register';
-  }
- }
   return (
-    // <div>{data && data}</div>
     <BrowserRouter>
       <Routes>
         {/* admin  routes */}
         <Route element={<PrivateRoutesAdmin />}>
           <Route path="/admin" element={<Admin_home />}>
+            <Route path="Queries" element={<AdminQueries />} />
             <Route
               path="/admin/AdminDashboard"
               element={<Dashboard admin={true} />}

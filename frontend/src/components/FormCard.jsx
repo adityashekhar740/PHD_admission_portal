@@ -5,6 +5,7 @@ function FormCard({ form, dashboard, AIP, AC }) {
   const { currentUser, loading, error } = useSelector((state) => state.user);
   return (
     <>
+    
       {dashboard ? (
         <div className="h-[75px] w-full flex bg-white rounded-sm border items-center   ">
           <div className="w-[4px] bg-[#e45c37] h-[100%]"></div>
@@ -32,7 +33,10 @@ function FormCard({ form, dashboard, AIP, AC }) {
               </div>
               <div className="flex items-center px-7 border-solid border-x-[0.1px] border-gray-300  ">
                 <div>
-                  <button onClick={()=>{alert(form.status)}}
+                  <button
+                    onClick={() => {
+                      alert(form.status);
+                    }}
                     className={`bg-[#65af41] text-[white] px-3 py-1 rounded-sm `}
                   >
                     View Status
