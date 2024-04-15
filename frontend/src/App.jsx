@@ -27,17 +27,7 @@ import AdminQueries from "./pages/AdminPages/AdminQueries";
 function App() {
   const { currentUser } = useSelector((state) => state.user);
 
-  if (window.location.pathname === "/" ) {
-    if (currentUser !== null) {
-      if (currentUser.username) {
-        window.location.pathname = "/dashboard";
-      } else {
-        window.location.pathname = "/admin/AdminDashboard";
-      }
-    } else {
-      window.location.pathname = "/";
-    }
-  }
+ 
   return (
     <BrowserRouter>
       <Routes>

@@ -3,7 +3,23 @@ import bgimg from "../assets/bgimg.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Register = () => {
+  const {currentUser}=useSelector((state)=>state.user);
+  useEffect(()=>{
+     if (window.location.pathname === "/" ) {
+    if (currentUser !== null) {
+      if (currentUser.username) {
+        window.location.pathname = "/dashboard";
+      } else {
+        window.location.pathname = "/admin/AdminDashboard";
+      }
+    }
+    // } else {
+    //   window.location.pathname = "/";
+    // }
+  }
+  },[])
     const [allerror,SetAllError]=useState(null);
   const navigate = useNavigate();
   const [formData, setformData] = useState({
