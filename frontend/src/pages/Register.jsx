@@ -3,7 +3,10 @@ import bgimg from "../assets/bgimg.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Register = () => {
+  const {currentUser}=useSelector((state)=>state.user);
 
      useEffect(()=>{
      if (window.location.pathname === "/" ) {
