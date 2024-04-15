@@ -27,17 +27,17 @@ import AdminQueries from "./pages/AdminPages/AdminQueries";
 function App() {
   const { currentUser } = useSelector((state) => state.user);
 
-  if (window.location.pathname === "/") {
-    if (currentUser !== null) {
-      if (currentUser.username) {
-        window.location.pathname = "/dashboard";
-      } else {
-        window.location.pathname = "/admin/AdminDashboard";
-      }
-    } else {
-      window.location.pathname = "/register";
-    }
-  }
+  // if (window.location.pathname === "/") {
+  //   if (currentUser !== null) {
+  //     if (currentUser.username) {
+  //       window.location.pathname = "/dashboard";
+  //     } else {
+  //       window.location.pathname = "/admin/AdminDashboard";
+  //     }
+  //   } else {
+  //     window.location.pathname = "/";
+  //   }
+  // }
   return (
     <BrowserRouter>
       <Routes>
@@ -57,7 +57,7 @@ function App() {
           </Route>
         </Route>
         {/* Auth routes */}
-        <Route path="/register" element={<Register />}></Route>
+        <Route path="/" element={<Register />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/admin-signin" element={<AdminSignin />}></Route>
         <Route path="/admin-signup" element={<AdminSignup />}></Route>
