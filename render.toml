@@ -1,5 +1,7 @@
+
 [[redirects]]
   from = "/*"
   to = "/frontend/dist/index.html"
   status = 200
   headers = { "Content-Security-Policy" = "font-src 'self' data:;" }
+
