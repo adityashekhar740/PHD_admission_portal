@@ -6,7 +6,13 @@ import "./AdminCss.css";
 function AppnCard({ app, AppnApproved, AppnRejected, Query, QR }) {
   const [modalOpen, setModelOpen] = useState(false);
 
-  const handleClick = async(id) => {
+  const handleClick = async() => {
+    setModelOpen(true);
+    document.body.classList.toggle('modalOpen');
+
+  };
+
+  const handleClickQuery=async(id)=>{
     const response=prompt('Enter Response');
     try{
       const res=await axios.post(`/api/admin/replyQuery/${id}`,{response:response});
@@ -16,7 +22,7 @@ function AppnCard({ app, AppnApproved, AppnRejected, Query, QR }) {
     catch(e){
       console.log(e);
     }
-  };
+  }
   return (
     <>
       {AppnApproved ? (
@@ -134,7 +140,7 @@ function AppnCard({ app, AppnApproved, AppnRejected, Query, QR }) {
                 <div>
                   <button
                     onClick={() => {
-                      handleClick(Query._id);
+                      handleClickQuery(Query._id);
                     }}
                     className={`bg-[#65af41] text-[white] px-3 py-1 rounded-sm `}
                   >
