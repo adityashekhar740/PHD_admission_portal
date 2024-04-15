@@ -7,10 +7,11 @@ const AdminRouter=require('./routes/Admin.js');
 const UserRouter =require('./routes/User.js');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
+const path=require('path');
 
 dotenv.config();
 const cookieParser=require('cookie-parser');
-
+const __dir=path.resolve();
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
@@ -20,7 +21,11 @@ app.use('/api/application',ApplicationRouter);
 app.use('/api/user',UserRouter);
 app.use('/api/admin',AdminRouter);
 
+app.use(express.static(path.join(__dir,'/frontend/dist')));
 
+app.get('*',(req,res)=>{
+    app.sendFile(path.join(__dir,'frontend','dist','index.html'));
+})
 
 mongoose.connect(`${process.env.PASS_KEY}`).then(()=>{
     console.log('db connected');
