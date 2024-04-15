@@ -4,6 +4,22 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
+
+     useEffect(()=>{
+     if (window.location.pathname === "/" ) {
+    if (currentUser !== null) {
+      if (currentUser.username) {
+        window.location.pathname = "/dashboard";
+      } else {
+        window.location.pathname = "/admin/AdminDashboard";
+      }
+    }
+    // } else {
+    //   window.location.pathname = "/";
+    // }
+  }
+  },[])
+    
     const [allerror,SetAllError]=useState(null);
   const navigate = useNavigate();
   const [formData, setformData] = useState({
