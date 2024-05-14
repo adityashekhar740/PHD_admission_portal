@@ -59,9 +59,9 @@ const Signin = () => {
                 <br />
                 <input onChange={(e)=>{handleChange(e)}} className=' outline-none w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid ' type="password" name="password" id="password" />
                 </div>
-                <span className='text-sm text-gray-600 ' >Don't have an account? <Link to={'/register'} className='text-blue-700 font-semibold ' >Sign up</Link> </span>
+                <span className='text-sm text-gray-600 ' >Don't have an account? <Link to={'/'} className='text-blue-700 font-semibold ' >Sign up</Link> </span>
                 <div>
-                    <button className=' mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white ' >Sign in</button>
+                    <button className=' mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white min-w-[90px] ' >Sign in</button>
                 </div>
                 </div>
             </form>

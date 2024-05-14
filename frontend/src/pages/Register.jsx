@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 const Register = () => {
   const {currentUser}=useSelector((state)=>state.user);
+  useEffect(()=>{
 
-     useEffect(()=>{
      if (window.location.pathname === "/" ) {
     if (currentUser !== null) {
       if (currentUser.username) {
@@ -22,7 +21,7 @@ const Register = () => {
     // }
   }
   },[])
-    
+
     const [allerror,SetAllError]=useState(null);
   const navigate = useNavigate();
   const [formData, setformData] = useState({
@@ -109,7 +108,7 @@ const Register = () => {
               </Link>{" "}
             </span>
             <div>
-              <button className="mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white">
+              <button className="mt-5 min-w-[90px] ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white">
                 Register
               </button>
             </div>

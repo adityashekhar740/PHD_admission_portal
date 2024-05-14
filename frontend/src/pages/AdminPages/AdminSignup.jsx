@@ -38,9 +38,9 @@ const AdminSignup = () => {
             <img className='h-[100%] w-[100%]  object-cover ' src={bgimg} alt="" />
         </div>
 
-        <div className='left-[27%] w-[40%] p-[45px] absolute lg:w-[30%] rounded lg:left-[57%] top-[20%] bg-[#fff] z-[5] h-[60%] ' >
+        <div className='left-[27%] md:left-[40%] lg:left-[60%] w-[40%] md:w-[40%] lg:w-[30%] p-[45px] absolute rounded top-[16%] bg-[#fff] z-[5] h-[64%] ' >
             <form onSubmit={(e)=>{handleSubmit(e)}} action="">
-                <h1 className='font-semibold text-[27px] uppercase text-gray-800 ' >WELCOME ADMIN</h1>
+                <h1 className='font-semibold text-[27px] uppercase min-w-[300px] text-gray-800 ' >WELCOME ADMIN</h1>
                 <h1>sign up</h1>
                 <div className='flex flex-col gap-4 mt-6 ' >
                     <div>
@@ -57,9 +57,9 @@ const AdminSignup = () => {
                 <br />
                 <input onChange={(e)=>{handleChange(e)}} className=' outline-none w-[100%] px-2 py-1 border-b-[2px] border-[#d3632e] border-solid ' type="password" name="password" id="password" />
                 </div>
-                <span className='text-sm text-gray-600 ' >Don't have an account? <Link to={'/register'} className='text-blue-700 font-semibold ' >Sign up</Link> </span>
+                <span className='text-sm text-gray-600 ' >Already have an account? <Link to={'/admin-signin'} className='text-blue-700 font-semibold ' >Sign in</Link> </span>
                 <div>
-                    <button className=' mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white ' >Sign in</button>
+                    <button className=' mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 min-w-[90px] py-[6px] rounded text-white ' >Sign Up</button>
                 </div>
                 </div>
             </form>

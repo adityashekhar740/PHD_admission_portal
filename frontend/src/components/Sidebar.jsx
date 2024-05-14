@@ -23,7 +23,7 @@ function Sidebar({admin}) {
             Candidate Application Form(s)
         </NavLink>
 
-        <NavLink  onClick={()=>{setactive('Profile')}} className={` flex gap-1 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='Profile'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/profile'} >
+        <NavLink  onClick={()=>{setactive('Profile')}} className={` flex gap-1 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='Profile'?'bg-[#e45c37]':'bg-[#656565]'}  `} to={'/admin/Profile'} >
             <CiUser />
             Profile
         </NavLink>
@@ -31,10 +31,7 @@ function Sidebar({admin}) {
             <IoIosChatboxes />
              Queries 
         </NavLink>
-        <NavLink onClick={()=>{setactive('FAQs')}} className={` flex gap-2 items-center h-[47px] p-2  border-t-[0.2px]  ${active==='FAQs'?'bg-[#e45c37]':'bg-[#656565]'}  `}to={'/FAQs'} >
-            <SlQuestion />
-            FAQs
-        </NavLink>
+      
        
     </div>
     :<div className=' flex flex-col h-[100%] w-[17%] bg-[#656565]  text-[white] ' >

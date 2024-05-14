@@ -48,7 +48,7 @@ function QR() {
               <div className="flex items-center px-7 border-solid border-x-[0.1px] border-gray-300  ">
                 <div>
                   <button
-                  disabled={query.response==='pending'}
+                  // disabled={query.response==='pending'}
                     onClick={() => {
                       alert(`${query.response}`);
                     }}
