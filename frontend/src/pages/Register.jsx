@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Register = () => {
   const {currentUser}=useSelector((state)=>state.user);
+  const navigate=useNavigate();
   useEffect(()=>{
      if (window.location.pathname === "/" ) {
     if (currentUser !== null) {
       if (currentUser.username) {
-        window.location.pathname = "/dashboard";
+        navigate('/dashboard');
       } else {
-        window.location.pathname = "/admin/AdminDashboard";
+        navigate('/admin/AdminDashboard');
       }
     }
     // } else {
@@ -21,7 +22,6 @@ const Register = () => {
   }
   },[])
     const [allerror,SetAllError]=useState(null);
-  const navigate = useNavigate();
   const [formData, setformData] = useState({
     username: "",
     email: "",
