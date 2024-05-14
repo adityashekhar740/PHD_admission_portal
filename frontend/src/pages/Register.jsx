@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const Register = () => {
   const {currentUser}=useSelector((state)=>state.user);
   useEffect(()=>{
+
      if (window.location.pathname === "/" ) {
     if (currentUser !== null) {
       if (currentUser.username) {
@@ -20,6 +21,7 @@ const Register = () => {
     // }
   }
   },[])
+
     const [allerror,SetAllError]=useState(null);
   const navigate = useNavigate();
   const [formData, setformData] = useState({
