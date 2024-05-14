@@ -106,7 +106,7 @@ const Register = () => {
               </Link>{" "}
             </span>
             <div>
-              <button className="mt-5 ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white">
+              <button className="mt-5 min-w-[90px] ml-[34%] w-[27%] bg-[#d3632e] px-3 py-[6px] rounded text-white">
                 Register
               </button>
             </div>

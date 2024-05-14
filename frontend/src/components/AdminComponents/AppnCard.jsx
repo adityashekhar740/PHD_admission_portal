@@ -110,12 +110,12 @@ function AppnCard({ app, AppnApproved, AppnRejected, Query, QR }) {
           ) : null}
         </div>
       ) : QR ? (
-        <div className="h-[75px] w-full flex bg-white rounded-sm border items-center   ">
-          <div className="w-[4px] bg-[#e45c37] h-[100%]"></div>
+          <div className="  my-3 max-h-[120px]  h-[100%] w-full py-2 flex bg-white rounded-sm border items-center   ">
+          <div className="w-[4px] bg-[#e45c37] h-[100%]  "></div>
           <div className="flex justify-between w-[90%] h-[100%]  items-center ">
             <div className="flex flex-col gap-1">
               <h1 className="text-[#666666] font-semibold  ml-3  h-[25%]  ">
-                 {Query.name}
+                 • {Query.name}
               </h1>
               <p className="font-semibold  ml-3  h-[25%] " >
                 Query: {Query.queryDescription}
@@ -125,24 +125,14 @@ function AppnCard({ app, AppnApproved, AppnRejected, Query, QR }) {
               </p>
             </div>
             <div className="flex  h-[100%] ">
-              <div className="flex items-center px-7 border-solid border-x-[0.1px] border-gray-300 ">
-                <h1 className="text-[#666666] ">
-                  {/* <span className=" font-semibold text-gray-500 ">
-                    {app.status === "rejected" ? (
-                      <h1 className="text-red-500">Rejected ❌ </h1>
-                    ) : (
-                      "Pending..."
-                    )}
-                  </span> */}
-                </h1>
-              </div>
-              <div className="flex items-center px-7 border-solid border-x-[0.1px] border-gray-300  ">
+              
+              <div className="flex items-center justify-center px-7 w-[200px] border-solid border-x-[0.1px] border-gray-300  ">
                 <div>
                   <button
                     onClick={() => {
                       handleClickQuery(Query._id);
                     }}
-                    className={`bg-[#65af41] text-[white] px-3 py-1 rounded-sm `}
+                    className={`bg-[#65af41] text-[white] px-3 py-[5px] rounded-sm `}
                   >
                     Reply Query
                   </button>
