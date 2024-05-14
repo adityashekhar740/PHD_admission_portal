@@ -8,6 +8,7 @@ const Register = () => {
   const {currentUser}=useSelector((state)=>state.user);
   const navigate=useNavigate();
   useEffect(()=>{
+
      if (window.location.pathname === "/" ) {
     if (currentUser !== null) {
       if (currentUser.username) {
@@ -21,6 +22,7 @@ const Register = () => {
     // }
   }
   },[])
+
     const [allerror,SetAllError]=useState(null);
   const [formData, setformData] = useState({
     username: "",
