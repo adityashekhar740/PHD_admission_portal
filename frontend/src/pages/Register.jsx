@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import bgimg from "../assets/bgimg.jpg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -114,6 +114,7 @@ const Register = () => {
             </div>
           </div>
         </form>
+      <div className="my-2 text-center" >Are you an admin? <span  ><NavLink className="text-blue-700 font-semibold" to={'/admin-signin'} >Login.</NavLink></span></div>
       </div>
       <div className="overlay bg-[black] bg-opacity-50 inset-0 absolute z-[1]"></div>
     </div>
